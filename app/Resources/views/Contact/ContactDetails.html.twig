@@ -1,0 +1,134 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="panel">
+
+        <div class="panel-heading" style="background-color: #A6192E;color:#ffffee">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="panel-title">
+                        <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                        Contact : # {{ contact.firstname }} {{ contact.lastname }}
+                    </h4>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <div>
+
+            <a href="{{ path('Address book') }}">
+
+                <button type="button" class="btn btn-primary" >Address book</button></a>
+        </div>
+        <br />
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="mag img-responsive">
+                        <img  class="img-responsive img-thumbnail" src="{{ asset('images/pictures/'~contact.imageName) }}" alt="picture">
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped" id="users">
+                            <thead>
+                            <tr>
+                                <h4>
+                                    Informations
+                                </h4>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td> Email</td>
+                                <td>
+                                    <p>{{ contact.email }}</p>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td> Birthday </td>
+                                <td>
+                                    <p>{{ contact.birthday | date('m/d/Y') }}</p>
+
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>Phone number</td>
+                                <td>
+                                    <p>{{ contact.phonenumber  }}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Country</td>
+                                <td>
+                                    <p>
+                                        {{ contact.country }}
+
+                                    </p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table></div>
+
+
+                </div>
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped" id="users">
+                            <thead>
+                            <tr>
+                                <h4>
+                                    Contact
+                                </h4>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <td>City</td>
+                            <td>
+                                <p>{{ contact.city}}</p>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>Street</td>
+                            <td>
+                                <p>{{ contact.street}}</p>
+                            </td>
+                            <tr>
+                            <td>Zip</td>
+                            <td>
+                                <p>{{ contact.zip}}</p>
+                            </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Modal for showing delete confirmation -->
+
+        </div>
+    </div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="panel">
+            <div class="panel-heading" style="background-color: #A6192E;color:#ffffee">
+                <h4 class="panel-title">
+                    <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                    Address book
+                </h4>
+                <h4 class="panel-title">
+                    <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                    {{ count }} Contacts
+                </h4>
+
+
+            </div>
+            <br />
+            <div>
+
+                <a href="{{ path('newcontact') }}">
+
+                    <button type="button" class="btn btn-primary" >Add new contact</button></a>
+            </div>
+            <br>
+            <div class="panel-body">
+
+                <table id="table" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th> Picture </th>
+                        <th> FirstName </th>
+                        <th> Last Name </th>
+                        <th> Email </th>
+                        <th> Birthday </th>
+                        <th> Phone number </th>
+                        <th> Action </th>
+
+
+                    </tr>
+                    </thead>
+                    <tfoot>
+
+                    <tr>
+                        <th> Picture </th>
+                        <th> FirstName </th>
+                        <th> Last Name </th>
+                        <th> Email </th>
+                        <th> Birthday </th>
+                        <th> Phone number </th>
+                        <th> Action </th>
+
+
+
+                    </tr>
+                    </tfoot>
+
+                    <tbody>
+
+                    {% for contact in contacts %}
+                        <tr>
+
+
+
+                            <td>  <img src="{{ asset('images/pictures/'~contact.imageName) }}" style="max-height: 100px ; max-width: 100px" class="img-responsive img-thumbnail"  alt="contact picture">
+                            </td>
+                            <td>    {{ contact.firstname  }} </td>
+                            <td>    {{ contact.lastname  }} </td>
+                            <td>    {{ contact.email  }}  </td>
+                            <td>    {{ contact.birthday | date("m/d/Y")  }}  </td>
+                            <td>    {{ contact.phonenumber  }}  </td>
+                            <td>
+                                <a href="{{ path('detail_contact',{'id': contact.id}) }}">
+
+                                    <button type="button" class="btn btn-success" >Detail</button></a>
+
+                                <a href="{{ path('edit_contact',{'id': contact.id}) }}">
+
+                                    <button type="button" class="btn btn-warning" >Edit</button></a>
+                                &nbsp;
+
+                                <a href="{{ path('delete_contact',{'id': contact.id}) }}">
+
+                                    <button type="button" class="btn btn-danger" >Delete</button></a></td>
+
+
+
+
+
+
+                        </tr>
+
+
+
+
+
+
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <!-- Modal for showing delete confirmation -->
+
+            </div>
+        </div>
+    </div>
+{% endblock%}
